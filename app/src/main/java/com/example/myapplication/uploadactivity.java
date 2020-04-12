@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import java.io.*;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -82,7 +83,15 @@ public class uploadactivity extends AppCompatActivity {
         pd.setTitle("Uploading file....");
         pd.setProgress(0);
         pd.show();
-        final String fileName=System.currentTimeMillis()+"";
+        String path = pdfuri.getPath();
+        String filename = path.substring(path.lastIndexOf("/")+1);
+        final String fileName;
+        if (filename.indexOf(".") > 0) {
+            fileName = filename.substring(0, filename.lastIndexOf("."));
+        } else {
+            fileName =  filename;
+        }
+        //final String fileName=System.currentTimeMillis()+"";
         StorageReference storageReference=fstore.getReference();//get path where file will be stored in firebase
         storageReference.child("Uploads").child(fileName).putFile(pdfuri)//make sub directory to store the files
         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

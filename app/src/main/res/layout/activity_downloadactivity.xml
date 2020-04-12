@@ -29,12 +29,11 @@
 
     <EditText
         android:id="@+id/editText6"
-        android:layout_width="275dp"
-        android:layout_height="66dp"
+        android:layout_width="339dp"
+        android:layout_height="68dp"
         android:layout_marginTop="176dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
