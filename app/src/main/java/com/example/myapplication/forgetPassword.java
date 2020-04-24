@@ -28,21 +28,25 @@ public class forgetPassword extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String emailid=email.getText().toString();
-                fauth.sendPasswordResetEmail(emailid).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful())
-                        {
-                            Toast.makeText(forgetPassword.this,"Reset email sent",Toast.LENGTH_SHORT).show();
-                        }
-                        else if(!(task.isSuccessful()))
-                        {
-                            Toast.makeText(forgetPassword.this,"Error",Toast.LENGTH_SHORT).show();
+                if (emailid.isEmpty())
+                {
+                    email.setError("email is required");
+                    email.requestFocus();
 
-                        }
-                    }
-                });
+                }
+                else {
+                    fauth.sendPasswordResetEmail(emailid).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(forgetPassword.this, "Reset email sent", Toast.LENGTH_SHORT).show();
+                            } else if (!(task.isSuccessful())) {
+                                Toast.makeText(forgetPassword.this, "Error", Toast.LENGTH_SHORT).show();
 
+                            }
+                        }
+                    });
+                }
             }
         });
     }
