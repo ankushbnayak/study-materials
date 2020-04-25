@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.myapplication">
+    package="com.args.StudyMaterials">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".forgetPassword"></activity>
-        <activity android:name=".uploadactivity" />
-        <activity android:name=".Navigate" />
-        <activity android:name=".Signupactivity" />
-        <activity android:name=".Loginactivity" />
-        <activity android:name=".MainActivity"
+        <activity android:name="com.args.StudyMaterials.forgetPassword"></activity>
+        <activity android:name="com.args.StudyMaterials.uploadactivity" />
+        <activity android:name="com.args.StudyMaterials.Navigate" />
+        <activity android:name="com.args.StudyMaterials.Signupactivity" />
+        <activity android:name="com.args.StudyMaterials.Loginactivity" />
+        <activity android:name="com.args.StudyMaterials.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

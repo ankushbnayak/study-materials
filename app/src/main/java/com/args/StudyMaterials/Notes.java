@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.args.StudyMaterials;
 
 
 //i am using this java class for

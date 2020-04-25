@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.args.StudyMaterials;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

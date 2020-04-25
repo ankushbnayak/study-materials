@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.args.StudyMaterials;
 
 import android.content.Context;
 
