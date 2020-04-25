@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -126,10 +127,11 @@ public class uploadactivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String url=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(); //PROBLEM
                 DatabaseReference databaseReference=fdb.getReference();//path to root
-                notes.setNotes_url(url);
+                notes.setNotes_url(fileName);
                 notes.setNotes_branch(branch_name);
                 notes.setNotes_name(notes_selected_name);
-                databaseReference.child("Notes").setValue(notes).addOnCompleteListener(new OnCompleteListener<Void>() {
+                databaseReference = FirebaseDatabase.getInstance().getReference("notes");
+                databaseReference.push().setValue(notes).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())

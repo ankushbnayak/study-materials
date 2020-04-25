@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".forgetPassword"></activity>
-        <activity android:name=".downloadactivity" />
         <activity android:name=".uploadactivity" />
         <activity android:name=".Navigate" />
         <activity android:name=".Signupactivity" />
