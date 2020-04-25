@@ -6,11 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <ImageView
         android:src="@drawable/splashlogo"
         android:layout_width="250dp"
         android:layout_height="250dp"/>
+    <TextView
+        android:textSize="35dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/colorPrimary"
+        android:text="NOTES KERNAL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
