@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,11 @@ public class uploadactivity extends AppCompatActivity {
 
    ProgressDialog pd;
    Uri pdfuri;
+
+   Notes notes;
+
+   //for receiving the notes name and the branch name
+    EditText branch,notes_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +53,13 @@ public class uploadactivity extends AppCompatActivity {
         choose=findViewById(R.id.button6);
         upload=findViewById(R.id.button7);
         text=findViewById(R.id.textView5);
+
+        branch = findViewById(R.id.name_of_branch);
+        notes_name = findViewById(R.id.name_of_notes);
+
+
+        // i am roughly calling the notes java class
+        notes = new Notes();
 
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +77,24 @@ public class uploadactivity extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(pdfuri!=null)
+                if(pdfuri==null)
                 {
-                    uploadfile(pdfuri);
+                    Toast.makeText(uploadactivity.this, "Select a file please", Toast.LENGTH_SHORT).show();
+
+                }
+                else if(notes_name.getText().toString().isEmpty())
+                {
+                    notes_name.setError("Enter the name of the notes");
+                    notes_name.requestFocus();
+                }
+                else if(branch.getText().toString().isEmpty())
+                {
+                    branch.setError("please enter your branch");
+                    branch.requestFocus();
                 }
                 else
                 {
+                    uploadfile(pdfuri);
                     Toast.makeText(uploadactivity.this,"Select a file",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -78,6 +103,8 @@ public class uploadactivity extends AppCompatActivity {
     }
     private void uploadfile(Uri pdfuri)
     {
+        final String branch_name = branch.getText().toString();
+        final String notes_selected_name = notes_name.getText().toString();
         pd=new ProgressDialog(this);
         pd.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         pd.setTitle("Uploading file....");
@@ -99,7 +126,10 @@ public class uploadactivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String url=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(); //PROBLEM
                 DatabaseReference databaseReference=fdb.getReference();//path to root
-                databaseReference.child(fileName).setValue(url).addOnCompleteListener(new OnCompleteListener<Void>() {
+                notes.setNotes_url(url);
+                notes.setNotes_branch(branch_name);
+                notes.setNotes_name(notes_selected_name);
+                databaseReference.child("Notes").setValue(notes).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful())

@@ -16,9 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Navigate extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    public Button upload;
-    public Button download;
-    public Button logout;
+
 
     FirebaseAuth firebaseAuth;
     FirebaseUser user;
@@ -31,9 +29,6 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigate);
-        upload= findViewById(R.id.button3);
-        download=findViewById(R.id.button4);
-        logout=findViewById(R.id.button5);
 
 
         mDrawerLayout =(DrawerLayout)findViewById(R.id.drawer);
@@ -46,27 +41,6 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         NavigationView navigationview = (NavigationView) findViewById(R.id.navigation_view);
         navigationview.setNavigationItemSelectedListener(this);
 
-        upload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent u=new Intent(Navigate.this,uploadactivity.class);
-                startActivity(u);
-            }
-        });
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent d=new Intent(Navigate.this,downloadactivity.class);
-                startActivity(d);
-            }
-        });
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent log=new Intent(Navigate.this,Loginactivity.class);
-                startActivity(log);
-            }
-        });
     }
 
 

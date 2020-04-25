@@ -6,45 +6,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawer"
-    android:background="@drawable/rightnoww"
     tools:context=".Navigate">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="160dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="140dp"
-        android:text="Upload"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.936"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <ImageView
+                android:src="@drawable/splashlogo"
+                android:layout_width="60dp"
+                android:layout_height="50dp"/>
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginLeft="20dp"
+                android:text="BROWSE ALL NOTES HERE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:background="@drawable/edittext_back"
+                android:padding="10dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="SEARCH FOR NOTES"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="157dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="92dp"
-        android:text="Download"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/home_progressbar"
+                android:indeterminate="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:stackFromEnd="true"
+                app:reverseLayout="true"
+                android:scrollbars="vertical"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="93dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="120dp"
-        android:text="Log out"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
