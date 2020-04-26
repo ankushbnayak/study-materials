@@ -203,7 +203,8 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(id == R.id.your_notes)
         {
-            //write your code here
+            Intent your_notes_activity = new Intent(Navigate.this,YourNotes.class);
+            startActivity(your_notes_activity);
             return true;
         }
         return false;

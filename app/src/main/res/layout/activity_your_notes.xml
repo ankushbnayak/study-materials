@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".YourNotes">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:background="@color/colorPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+            <ImageView
+                android:src="@drawable/outline"
+                android:layout_width="60dp"
+                android:layout_height="50dp"/>
+            <TextView
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#fff"
+                android:layout_marginLeft="20dp"
+                android:text="PERSONAL NOTES STORAGE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/yournotes_search"
+                android:background="@drawable/edittext_back"
+                android:padding="10dp"
+                android:drawablePadding="10dp"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                android:hint="SEARCH FOR NOTES"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/your_notes_progressbar"
+                android:indeterminate="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/no_notes_linear_layout"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:src="@drawable/nonotes"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"/>
+            <TextView
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:text="YOU HAVENT ADDED ANY NOTES YET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/your_notes_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:clickable="false"
+                android:focusable="false"
+                app:stackFromEnd="true"
+                app:reverseLayout="true"
+                android:scrollbars="vertical"
+                android:focusableInTouchMode="false" />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
