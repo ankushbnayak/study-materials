@@ -162,13 +162,19 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(id == R.id.about_us)
         {
-            //add your own intent or anything else
+            Intent about = new Intent(Navigate.this,WebActivity.class);
+            String url = "https://hosting-for-others.web.app/about(notes-kernal).html";
+            about.putExtra("website",url);
+            startActivity(about);
             return true;
         }
 
         else if(id == R.id.rate_us)
         {
-            //add your own intent or feature but remember to change in the menu
+            String url = "https://play.google.com/store/apps/details?id=com.args.StudyMaterials";
+            Intent rate_us = new Intent(Intent.ACTION_VIEW);
+            rate_us.setData(Uri.parse(url));
+            startActivity(rate_us);
             return true;
         }
         else if(id == R.id.sign_out)
@@ -194,6 +200,11 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
                     })
                     .create().show();
 
+        }
+        else if(id == R.id.your_notes)
+        {
+            //write your code here
+            return true;
         }
         return false;
     }
@@ -260,9 +271,6 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public void OnItemClick(final String filename, final String Download_name)
     {
-
-        //Toast.makeText(this, ""+filename, Toast.LENGTH_SHORT).show();
-
         storageReference1=fstr.getInstance().getReference("Uploads");
         ref=storageReference1.child(filename);
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
