@@ -9,7 +9,10 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -52,6 +55,9 @@ public class YourNotes extends AppCompatActivity implements NotesAdapter.OnItemC
     FirebaseUser user;
 
     LinearLayout no_notes_added;
+
+    //for search functionality
+    EditText search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +73,8 @@ public class YourNotes extends AppCompatActivity implements NotesAdapter.OnItemC
 
         no_notes_added = findViewById(R.id.no_notes_linear_layout);
         no_notes_added.setVisibility(View.GONE);
+
+        search = findViewById(R.id.yournotes_search);
 
 
         mUploads = new ArrayList<>();
@@ -114,7 +122,48 @@ public class YourNotes extends AppCompatActivity implements NotesAdapter.OnItemC
 
 
         });
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
     }
+
+    //for search edittext
+    private void filter(String text)
+    {
+        //ArrayList<Upload> filterList = new ArrayList<Upload>();
+        try {
+            ArrayList<Notes> filterList = new ArrayList<>();
+            for (Notes item: mUploads){
+                if(item.getNotes_name().toLowerCase().contains(text.toLowerCase()))
+                {
+                    filterList.add(item);
+                }
+            }
+            mAdapter.filterLists(filterList);
+
+        }
+        catch (Exception e)
+        {
+            //Toast.makeText(this, ""+e, Toast.LENGTH_LONG).show();
+        }
+
+
+    }
+
 
     @Override
     public void OnItemClick(String filename, final String download_name)
