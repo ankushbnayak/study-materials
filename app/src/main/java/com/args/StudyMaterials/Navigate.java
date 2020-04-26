@@ -260,6 +260,7 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     public void OnItemClick(final String filename, final String Download_name)
     {
+
         //Toast.makeText(this, ""+filename, Toast.LENGTH_SHORT).show();
 
         storageReference1=fstr.getInstance().getReference("Uploads");
@@ -268,26 +269,6 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onSuccess(Uri uri) {
                 String url=uri.toString();
-                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("notes");
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot ds:dataSnapshot.getChildren())
-                        {
-                            Notes notes1=  ds.getValue(Notes.class);
-                            if(filename==notes1.getNotes_url()){
-                                 download_filename=notes1.getNotes_name();
-                                 break;
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
                 downloadfiles(Navigate.this,Download_name,".pdf",DIRECTORY_DOWNLOADS,url);
 
             }
