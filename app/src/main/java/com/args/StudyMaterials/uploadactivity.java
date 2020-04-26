@@ -94,7 +94,7 @@ public class uploadactivity extends AppCompatActivity {
                 else
                 {
                     uploadfile(pdfuri);
-                    Toast.makeText(uploadactivity.this,"Select a file",Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(uploadactivity.this,"Select a file",Toast.LENGTH_SHORT).show();
                 }
             }
         });

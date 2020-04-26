@@ -67,6 +67,9 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
     FirebaseStorage fstr;
     StorageReference storageReference1;
     StorageReference ref;
+    FirebaseDatabase fdb;
+    String download_filename="";
+
 
     //for adding serch functionality
     EditText search_bar;
@@ -265,7 +268,27 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onSuccess(Uri uri) {
                 String url=uri.toString();
-                downloadfiles(Navigate.this,filename,".pdf",DIRECTORY_DOWNLOADS,url);
+                DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference("notes");
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot ds:dataSnapshot.getChildren())
+                        {
+                            Notes notes1=  ds.getValue(Notes.class);
+                            if(filename==notes1.getNotes_url()){
+                                 download_filename=notes1.getNotes_name();
+                                 break;
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+                downloadfiles(Navigate.this,download_filename,".pdf",DIRECTORY_DOWNLOADS,url);
 
             }
         }).addOnFailureListener(new OnFailureListener() {
