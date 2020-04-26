@@ -40,7 +40,7 @@ public class downloadactivity extends AppCompatActivity {
 
             }
         });
-    }
+      }
     public void download()
     {
         storageReference1=fstr.getInstance().getReference("Uploads");
