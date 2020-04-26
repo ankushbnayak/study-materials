@@ -258,7 +258,7 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
     }
 
     @Override
-    public void OnItemClick(final String filename)
+    public void OnItemClick(final String filename, final String Download_name)
     {
         //Toast.makeText(this, ""+filename, Toast.LENGTH_SHORT).show();
 
@@ -288,7 +288,7 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
 
                     }
                 });
-                downloadfiles(Navigate.this,download_filename,".pdf",DIRECTORY_DOWNLOADS,url);
+                downloadfiles(Navigate.this,Download_name,".pdf",DIRECTORY_DOWNLOADS,url);
 
             }
         }).addOnFailureListener(new OnFailureListener() {

@@ -46,8 +46,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ImageViewHol
             @Override
             public void onClick(View v) {
                 String notes_name = uploadCusrrent.getNotes_url();
+                String file_name = uploadCusrrent.getNotes_name();
                 Toast.makeText(mContext, "Downloading...", Toast.LENGTH_SHORT).show();
-                mListener.OnItemClick(notes_name);
+                mListener.OnItemClick(notes_name,file_name);
             }
         });
 
@@ -84,7 +85,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ImageViewHol
 
     public interface OnItemClickListener {
         //,int release_date
-        void OnItemClick(String filename);
+        void OnItemClick(String filename,String download_name);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
