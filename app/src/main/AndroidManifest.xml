@@ -13,12 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.args.StudyMaterials.forgetPassword"></activity>
-        <activity android:name="com.args.StudyMaterials.uploadactivity" />
-        <activity android:name="com.args.StudyMaterials.Navigate" />
-        <activity android:name="com.args.StudyMaterials.Signupactivity" />
-        <activity android:name="com.args.StudyMaterials.Loginactivity" />
-        <activity android:name="com.args.StudyMaterials.MainActivity"
+        <activity android:name=".ChooseLogin"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".forgetPassword" />
+        <activity android:name=".uploadactivity" />
+        <activity android:name=".Navigate" />
+        <activity android:name=".Signupactivity" />
+        <activity android:name=".Loginactivity" />
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
