@@ -119,15 +119,15 @@ public class uploadactivity extends AppCompatActivity {
         pd.setTitle("Uploading file....");
         pd.setProgress(0);
         pd.show();
-        String path = pdfuri.getPath();
+       /* String path = pdfuri.getPath();
         String filename = path.substring(path.lastIndexOf("/")+1);
         final String fileName;
         if (filename.indexOf(".") > 0) {
             fileName = filename.substring(0, filename.lastIndexOf("."));
         } else {
             fileName =  filename;
-        }
-        //final String fileName=System.currentTimeMillis()+"";
+        }*/
+        final String fileName=System.currentTimeMillis()+"";
         StorageReference storageReference=fstore.getReference();//get path where file will be stored in firebase
         storageReference.child("Uploads").child(fileName).putFile(pdfuri)//make sub directory to store the files
         .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -135,6 +135,10 @@ public class uploadactivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 String url=taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(); //PROBLEM
                 DatabaseReference databaseReference=fdb.getReference();//path to root
+                DatabaseReference databaseReference1;
+                firebaseAuth=FirebaseAuth.getInstance();
+                FirebaseUser user_branch=firebaseAuth.getCurrentUser();
+                String user=user_branch.getUid();
                 notes.setNotes_url(fileName);
                 notes.setNotes_branch(branch_name);
                 notes.setNotes_name(notes_selected_name);
@@ -152,6 +156,8 @@ public class uploadactivity extends AppCompatActivity {
                         }
                     }
                 });
+                databaseReference1 = FirebaseDatabase.getInstance().getReference(user);
+                databaseReference1.push().setValue(notes);
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
