@@ -7,8 +7,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.common.internal.DialogRedirect;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
@@ -167,11 +170,27 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if(id == R.id.sign_out)
         {
-            firebaseAuth = FirebaseAuth.getInstance();
-            firebaseAuth.signOut();
-            Intent signout = new Intent(Navigate.this,Loginactivity.class);
-            startActivity(signout);
-            finish();
+            new AlertDialog.Builder(this)
+                    .setTitle("Sign out!")
+                    .setMessage("Are you sure you want to sign out?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            firebaseAuth = FirebaseAuth.getInstance();
+                            firebaseAuth.signOut();
+                            Intent signout = new Intent(Navigate.this,ChooseLogin.class);
+                            startActivity(signout);
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+
         }
         return false;
     }

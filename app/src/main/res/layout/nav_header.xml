@@ -12,10 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <ImageView
-        android:background="#fff"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:src="@drawable/splashlogo"/>
+        android:src="@drawable/outline"/>
     </LinearLayout>
     <TextView
         android:padding="8dp"
