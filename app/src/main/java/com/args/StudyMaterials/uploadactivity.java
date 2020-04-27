@@ -188,15 +188,15 @@ public class uploadactivity extends AppCompatActivity {
         pd.setTitle("Uploading file....");
         pd.setProgress(0);
         pd.show();
-        String path = pdfuri.getPath();
+        /*String path = pdfuri.getPath();
         String filename = path.substring(path.lastIndexOf("/")+1);
         final String fileName;
         if (filename.indexOf(".") > 0) {
             fileName = filename.substring(0, filename.lastIndexOf("."));
         } else {
             fileName =  filename;
-        }
-        //final String fileName=System.currentTimeMillis()+"";
+        }*/
+        final String fileName=System.currentTimeMillis()+"";
         StorageReference storageReference=fstore.getReference();//get path where file will be stored in firebase
         storageReference.child("Uploads").child(fileName).putFile(pdfuri)//make sub directory to store the files
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
