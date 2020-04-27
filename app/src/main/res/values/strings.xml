@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NotesKernal</string>
+    <string name="app_name">NotesKernel</string>
     <string name="title_activity_navigationacivity">Navigationacivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

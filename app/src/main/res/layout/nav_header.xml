@@ -22,7 +22,7 @@
         android:gravity="center"
         android:textSize="18dp"
         android:textColor="#fff"
-        android:text="NOTES KERNAL"
+        android:text="NOTES KERNEL"
         android:layout_width="match_parent"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:layout_height="wrap_content"></TextView>

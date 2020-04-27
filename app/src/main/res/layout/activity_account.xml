@@ -28,7 +28,7 @@
                 android:textStyle="bold"
                 android:textSize="16dp"
                 android:textColor="#fff"
-                android:text="YOUR NOTEKERNAL ACCOUNT"
+                android:text="YOUR NOTEKERNEL ACCOUNT"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -113,7 +113,7 @@
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:textSize="15dp"
                 android:gravity="left|center_vertical"
-                android:text="ABOUT NOTE KERNAL"
+                android:text="ABOUT NOTE KERNEL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -128,7 +128,7 @@
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:textSize="15dp"
                 android:gravity="left|center_vertical"
-                android:text="CONTACT NOTE KERNAL"
+                android:text="CONTACT NOTE KERNEL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -143,7 +143,7 @@
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:textSize="15dp"
                 android:gravity="left|center_vertical"
-                android:text="RATE NOTE KERNAL"
+                android:text="RATE NOTE KERNEL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -158,7 +158,7 @@
                 android:drawableRight="@drawable/ic_keyboard_arrow_right_black_24dp"
                 android:textSize="15dp"
                 android:gravity="left|center_vertical"
-                android:text="SHARE NOTE KERNAL"
+                android:text="SHARE NOTE KERNEL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>

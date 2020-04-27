@@ -29,7 +29,7 @@
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="@android:color/black"
-                android:text="Welcome to NotesKernal"
+                android:text="Welcome to NotesKernel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
@@ -56,7 +56,7 @@
             android:background="@color/colorPrimary"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:text="Create free Notes Kernal account"
+            android:text="Create free Notes Kernel account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -70,7 +70,7 @@
                 android:background="#DCDCDC"
                 android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                android:text="Sign in with Notes Kernal Account"
+                android:text="Sign in with Notes Kernel Account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
