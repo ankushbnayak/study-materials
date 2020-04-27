@@ -160,6 +160,12 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(upload);
             return true;
         }
+        else if(id == R.id.account)
+        {
+            Intent acc = new Intent(Navigate.this,AccountActivity.class);
+            startActivity(acc);
+            return true;
+        }
         else if(id == R.id.about_us)
         {
             Intent about = new Intent(Navigate.this,WebActivity.class);
@@ -205,6 +211,14 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         {
             Intent your_notes_activity = new Intent(Navigate.this,YourNotes.class);
             startActivity(your_notes_activity);
+            return true;
+        }
+        else if(id == R.id.download_other_apps)
+        {
+            String url = "https://play.google.com/store/apps/dev?id=5687678052720582147";
+            Intent rate_us = new Intent(Intent.ACTION_VIEW);
+            rate_us.setData(Uri.parse(url));
+            startActivity(rate_us);
             return true;
         }
         return false;
