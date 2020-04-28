@@ -34,9 +34,9 @@ import java.util.List;
 
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
-public class YourNotes extends AppCompatActivity implements NotesAdapter.OnItemClickListener {
+public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
-    private NotesAdapter mAdapter;
+    private YourNotesAdapter mAdapter;
 
     private DatabaseReference mDatabaseRef;
     private List<Notes> mUploads;
@@ -98,7 +98,7 @@ public class YourNotes extends AppCompatActivity implements NotesAdapter.OnItemC
 
 
                 //mAdapter.notifyDataSetChanged();
-                mAdapter = new NotesAdapter(YourNotes.this, mUploads);
+                mAdapter = new YourNotesAdapter(YourNotes.this, mUploads);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.setOnItemClickListener(YourNotes.this);
                 mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
