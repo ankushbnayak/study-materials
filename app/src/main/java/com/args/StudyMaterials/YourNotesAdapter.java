@@ -65,7 +65,7 @@ public class YourNotesAdapter extends RecyclerView.Adapter<YourNotesAdapter.Imag
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String notes_name = uploadCusrrent.getNotes_url();
+                //final String notes_name = uploadCusrrent.getNotes_url();
                 firebaseAuth=FirebaseAuth.getInstance();
                 firebaseUser=firebaseAuth.getCurrentUser();
                 String user_id=firebaseUser.getUid();
