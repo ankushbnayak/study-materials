@@ -1,10 +1,14 @@
 package com.args.StudyMaterials;
 
 
+import com.google.firebase.database.Exclude;
+
 //i am using this java class for
 public class Notes
 {
     String notes_url, notes_name,notes_branch;
+
+    private String key;
 
     public String getNotes_url() {
         return notes_url;
@@ -28,5 +32,15 @@ public class Notes
 
     public void setNotes_branch(String notes_branch) {
         this.notes_branch = notes_branch;
+    }
+
+    @Exclude
+    public String getKey() {
+        return key;
+    }
+
+    @Exclude
+    public void setKey(String key) {
+        this.key = key;
     }
 }

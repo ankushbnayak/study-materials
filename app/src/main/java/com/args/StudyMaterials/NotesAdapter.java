@@ -1,7 +1,10 @@
 package com.args.StudyMaterials;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -61,7 +64,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ImageViewHol
         return muploads.size();
     }
 
-    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
+            View.OnCreateContextMenuListener , MenuItem.OnMenuItemClickListener {
         public TextView textViewName_branch, textViewName_notes_name;
         ImageView download;
 
@@ -73,6 +77,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ImageViewHol
             textViewName_notes_name = itemView.findViewById(R.id.notes_name_of_notes);
             download = itemView.findViewById(R.id.download_notes_from_url);
             itemView.setOnClickListener(this);
+            itemView.setOnCreateContextMenuListener(this);
 
         }
 
@@ -81,11 +86,36 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ImageViewHol
 
             //mListener . OnItemClick(title,news,time,image_uri);
         }
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.setHeaderTitle("select action");
+            MenuItem delete = menu.add(Menu.NONE,1,1,"Delete");
+            delete.setOnMenuItemClickListener(this);
+        }
+
+        @Override
+        public boolean onMenuItemClick(MenuItem item) {
+            if (mListener!= null)
+            {
+                int position = getAdapterPosition();
+                if(position != RecyclerView.NO_POSITION)
+                {
+                    switch (item.getItemId())
+                    {
+                        case 1:
+                            mListener.onDeleteClick(position);
+                            return true;
+                    }
+                }
+            }
+            return false;
+        }
     }
 
     public interface OnItemClickListener {
         //,int release_date
         void OnItemClick(String filename,String download_name);
+        void onDeleteClick(int position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

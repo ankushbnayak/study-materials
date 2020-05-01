@@ -34,9 +34,9 @@ import java.util.List;
 
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 
-public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.OnItemClickListener {
+public class YourNotes extends AppCompatActivity implements  NotesAdapter.OnItemClickListener {
     private RecyclerView mRecyclerView;
-    private YourNotesAdapter mAdapter;
+    private NotesAdapter mAdapter;
 
     private DatabaseReference mDatabaseRef;
     private List<Notes> mUploads;
@@ -49,6 +49,8 @@ public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.On
     FirebaseDatabase fdb;
     String download_filename="";
 
+    //for deletion
+    DatabaseReference delete_ref;
 
     //for accessing user id
     FirebaseAuth firebaseAuth;
@@ -76,6 +78,7 @@ public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.On
 
         search = findViewById(R.id.yournotes_search);
 
+        delete_ref = FirebaseDatabase.getInstance().getReference(user_id);
 
         mUploads = new ArrayList<>();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference(user_id);
@@ -90,15 +93,14 @@ public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.On
                 //this clear functionality avoids duplication of data
                 mUploads.clear();
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-
-
                     Notes upload = postSnapshot.getValue(Notes.class);
+                    upload.setKey(postSnapshot.getKey());
                     mUploads.add(upload);
                 }
 
 
                 //mAdapter.notifyDataSetChanged();
-                mAdapter = new YourNotesAdapter(YourNotes.this, mUploads);
+                mAdapter = new NotesAdapter(YourNotes.this, mUploads);
                 mRecyclerView.setAdapter(mAdapter);
                 mAdapter.setOnItemClickListener(YourNotes.this);
                 mRecyclerView.scrollToPosition(mAdapter.getItemCount()-1);
@@ -184,6 +186,13 @@ public class YourNotes extends AppCompatActivity implements  YourNotesAdapter.On
 
             }
         });
+    }
+
+    @Override
+    public void onDeleteClick(int position) {
+        Notes selecteditem = mUploads.get(position);
+        String selectedKey = selecteditem.getKey();
+        delete_ref.child(selectedKey).removeValue();
     }
 
     public  void downloadfiles(Context context, String fileName, String fileExtension, String destinationDirectory, String url)

@@ -303,6 +303,11 @@ public class Navigate extends AppCompatActivity implements NavigationView.OnNavi
         });
     }
 
+    @Override
+    public void onDeleteClick(int position) {
+        Toast.makeText(this, "You cannot delete a public notes", Toast.LENGTH_SHORT).show();
+    }
+
     public  void downloadfiles(Context context, String fileName, String fileExtension, String destinationDirectory, String url)
     {
         DownloadManager downloadManager=(DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
